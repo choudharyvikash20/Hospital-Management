@@ -1,0 +1,57 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/back-to-top-scroll-1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/back-to-top-scroll.cs' %}">
+    <link rel="stylesheet" href="{% static 'css/Bold-BS4-Animated-Back-To-Top.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/Sidebar-Menu-1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Sidebar-Menu.css' %}">
+   <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" >
+
+<main >
+
+    <div id="wrapper" style="min-height:300px;background-color:#FFEBCD" >
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li> <a href="{% url 'home' %}" style="color: white;background-color: grey;">Dashboard</a></li>
+                <li> <a href="{% url 'add_doctor' %}">Add Doctor</a></li>
+                <li> <a href="{% url 'add_receptionist'%}">Add Receptionist</a></li>
+                <li> <a href="{% url 'view_doctor'%}">View Doctors</a></li>
+                <li> <a href="{% url 'view_receptionist' %}">View Receptionists</a></li>
+                <li> <a href="{% url 'view_Patient' %}" >View Patient</a></li>
+                <li> <a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper" >
+            <div class="row">
+                    <div class="col-md-12">
+                        <div></div>
+                        <div>
+                            <h1>{{user.first_name}}</h1>
+                            <h2 class="text-center">You are sucessfully logged in..</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   {% ifequal error 'no' %}
+    <script type="text/javascript">
+        window.location('{% url 'home' %}')
+    </script>
+    {% endifequal %}
+    {% ifequal error 'yes' %}
+    <script type="text/javascript">
+        alert('Invaild credentials ...')
+        window.location('{% url 'loginpage' %}')
+    </script>
+    {% endifequal %}
+     <script src="{% static 'js/jquery.min.js' %}"></script>
+ <script src="{% static 'js/back-to-top-scroll.js' %}"></script>
+ <script src="{% static 'js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
+ <script src="{% static 'js/bs-init.js' %}"></script>
+ <script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</main>
+{% endblock %}

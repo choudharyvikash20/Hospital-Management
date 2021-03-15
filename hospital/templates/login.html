@@ -1,0 +1,25 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/login.css' %}" rel="stylesheet" type="text/css" >
+
+<!--_____________________________________________________________________________________________________________-->
+
+<main>
+    <img src="{% static 'img/signin.svg' %}" alt="Sign In">
+    <div>
+      <form method="POST">
+             {% csrf_token %}
+            <h2 class="sr-only">Login Form</h2>
+            <div></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
+        </form>
+      <p>Don't have an account? <a href="{% url 'createaccountpage' %}">Sign Up</a></p>
+    </div>
+  </main>
+
+<!--________________________________________________________________________________________________________________-->
+{% endblock %}

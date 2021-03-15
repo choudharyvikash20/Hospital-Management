@@ -1,0 +1,67 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+ <link rel="stylesheet" href="{% static 'css/Sidebar-Menu-1.css' %}">
+ <link rel="stylesheet" href="{% static 'css/Sidebar-Menu.css' %}">
+ <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" >
+
+<main>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li> <a href="{% url 'home' %}" >Home</a></li>
+                <li> <a href="{% url 'profile' %}" style="color: white;">Profile</a></li>
+                <li> <a href="{% url 'makeappointment' %}">Make Appointments</a></li>
+                <li> <a href="{% url 'viewappointments' %}">View Appointments</a></li>
+                <li> <a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="row register-form">
+                    <div class="col-md-8 offset-md-2">
+                        {% for p in patient_details %}
+                        <form class="custom-form" style="margin-top: 0px;padding-left:100px;background-color: rgba(0,0,0,0.05);">
+                            <h1 align="center">Your Profile</h1>
+                            <hr size="5px">
+                            <div></div>
+                            <div class="form-row form-group">
+                                <label class="col-form-label" for="name">Name </label>
+                               <input class="form-control" type="text" id="name" readonly="" value="{{p.name }}" style="width:500px">
+                            </div>
+                            <div class="form-row form-group">
+                                <label class="col-form-label" for="email">Email </label>
+                                <input class="form-control" type="text" id="email" readonly="" value="{{ p.email }}" style="width:500px">
+                            </div>
+                            <div class="form-row form-group">
+                                <label class="col-form-label" for="gender">Gender</label>
+                                <input class="form-control" type="text" id="gender" readonly="" value="{{ p.gender}}" style="width:500px">
+                            </div>
+                            <div class="form-row form-group">
+                                <label class="col-form-label" for="pn">Phone Number</label>
+                                <input class="form-control" type="text" id="pn" readonly="" value="{{ p.phonenumber}}" style="width:500px">
+                            </div>
+                            <div class="form-row form-group">
+                                <label class="col-form-label" for="address">Address</label>
+                                <textarea class="form-control" id="address" readonly="" style="width:500px;height:70px;padding: 10px;">{{ p.address}}</textarea>
+                            </div>
+                            <div class="form-row form-group">
+                                <label class="col-form-label" for="Bday">Birth Date</label>
+                                <input class="form-control" type="text" id="Bday" readonly="" value="{{ p.birthdate }}" style="width:500px">
+                            </div>
+                            <div class="form-row form-group">
+                                <label class="col-form-label" for="BG">Blood Group</label>
+                                <input class="form-control" type="text" id="BG" readonly="" value="{{ p.bloodgroup }}" style="width:500px">
+                            </div>
+                            
+                        </form>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+ <script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</main>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/Sidebar-Menu-1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Sidebar-Menu.css' %}">
+   <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" >
+
+<main>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li> <a href="{% url 'home' %}" style="color: white;">Home</a></li>
+                <li> <a href="{% url 'profile' %}" >Profile</a></li>
+                <li> <a href="{% url 'makeappointment' %}">Make Appointments</a></li>
+                <li> <a href="{% url 'viewappointments' %}" >View Appointments</a></li>
+                <li> <a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="row">
+                    <div class="col-md-12">
+                        <div></div>
+                        <div>
+                            <h1>{{user.first_name}}</h1>
+                            <h2 class="text-center">You are sucessfully logged in..</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% ifequal error 'no' %}
+    <script type="text/javascript">
+        window.location('{% url 'home' %}')
+    </script>
+    {% endifequal %}
+    {% ifequal error 'yes' %}
+    <script type="text/javascript">
+        alert('Invaild credentials ...')
+        window.location('{% url 'loginpage' %}')
+    </script>
+    {% endifequal %}
+
+
+ <script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</main>
+{% endblock %}

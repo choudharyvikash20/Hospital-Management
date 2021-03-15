@@ -1,0 +1,67 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+   <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/Sidebar-Menu-1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Sidebar-Menu.css' %}">
+   <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" >
+
+<main >
+    <div id="wrapper" style="min-height:300px;">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li> <a href="{% url 'home' %}" >Dashboard</a></li>
+                <li> <a href="{% url 'add_doctor' %}" >Add Doctor</a></li>
+                <li> <a href="{% url 'add_receptionist'%}">Add Receptionist</a></li>
+                <li> <a href="{% url 'view_doctor'%}" >View Doctors</a></li>
+                <li> <a href="{% url 'view_receptionist' %}"  style="color: white;background-color: grey;">View Receptionists</a></li>
+                <li> <a href="{% url 'view_Patient' %}" >View Patient</a></li>
+                <li> <a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div></div>
+            <p  align="center" style="font-weight:900;font-size:30px;">List of all Receptionist </p>
+
+                    <div class="container">
+                       <table class="table" id="example"><!--table-hover-->
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Gender</th>
+                                    <th>Phone Number</th>
+                                    <th>Date of Birth</th>
+                                    <th>Blood Group</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for i in rec %}
+                                <tr style="color: black;">
+                                    <td>{{ i.name }}</td>
+                                    <td>{{ i.email }}</td>
+                                    <td>{{ i.gender }}</td>
+                                    <td>{{ i.phonenumber }}</td>
+                                    <td>{{ i.birthdate }}</td>
+                                    <td>{{ i.bloodgroup }}</td>
+                                    <td><a href="{% url 'delete_receptionist' i.id i.email %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger"
+                                          style="background-color:#FF5733;">
+                                        Delete</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+            </div>
+        </div>
+
+
+ <script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</main>
+{% endblock %}

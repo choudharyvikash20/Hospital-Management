@@ -1,0 +1,42 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content%}
+<link href="{% static 'css/login.css' %}" rel="stylesheet" type="text/css" >
+<main>
+
+      <img src="{% static 'img/doc.png' %}" alt=" " style="backgroung-color:rgba(102, 204, 204, 0.8)">
+        <div>
+            <form>
+            <h2 class="sr-only">Contact BHU Hospital </h2>
+            <div></div>
+            <div class="form-group">
+                <h4 align="left">
+            BHU Hospital is strategically located in the heart <br>
+            of the city Varanasi and provide residential accommodation <br>
+            to doctors and staff members.It is also an academic and research <br>
+            institute, and a business and convention centre.
+            </h4></div>
+            <div></div>
+            <div class="form-group">
+                <h3 align="left" style="color:blue">
+                    Online customer support and 24x7 emergency
+                    care is available to all patients: domestic
+                    and international. Contact details, location
+                    maps, and directions are mentioned below.
+                    <br>
+                    <br>
+                                      +91-7778889990
+            </h3></div>
+
+        </form>
+
+
+      </div>
+  </main>
+
+ {% if user.is_authenticated %}
+        <script type="text/javascript">
+            window.location('{% url 'home' %}')
+        </script>
+ {% endif %}
+{% endblock %}

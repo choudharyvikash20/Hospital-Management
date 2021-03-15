@@ -1,0 +1,136 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/back-to-top-scroll-1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/back-to-top-scroll.cs' %}">
+    <link rel="stylesheet" href="{% static 'css/Bold-BS4-Animated-Back-To-Top.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/Sidebar-Menu-1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Sidebar-Menu.css' %}">
+   <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" >
+
+
+
+   <link rel = "stylesheet"
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+      <!--<link rel = "stylesheet"
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">-->
+      <script type = "text/javascript"
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+      </script>
+<main>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li> <a href="{% url 'home' %}" >Home</a></li>
+                <li> <a href="{% url 'profile' %}" >Profile</a></li>
+                <li> <a href="{% url 'viewappointments' %}" style="color: white;">View Appointments</a></li>
+                <li> <a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="page-content-wrapper">
+            <div></div>
+            <h1 class="text-left"><u>Upcoming</u> Appointments :</h1>
+                <div class="text-center" role="tablist" id="accordion-1">
+                    {% for i in coming_a %}
+                    <div></div>
+                    <ul class="collapsible popout text-center" data-collapsible="accordion">
+                    <li class="card">
+                        <div class="card-header collapsible-header">
+                            <p style="color:blue;font-size:20px;"><button class="btn btn-light submit-button" type="button">#</button><a style="height:10px;"><i class="fa fa-calendar-check-o"></i> Appointment with <strong style="color:black;">{{i.patientname}}</strong> on {{ i.appointmentdate}}</a></p>
+                        </div>
+                        <div class = "card-body collapsible-body">
+                                <table align="center" class="card-text" style="font-size: 19px;">
+                                    <tr>
+                                        <td>Doctor Name:</td>
+                                        <td>{{ i.doctorname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patient Name:</td>
+                                        <td>{{ i.patientname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Appointment Date:</td>
+                                        <td>{{ i.appointmentdate }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Appointment Time:</td>
+                                        <td>{{ i.appointmenttime }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Symptoms:</td>
+                                        <td>{{ i.symptoms }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Add Prescription :</td>
+                                       <form method="POST">
+                                        <td>{% csrf_token %}
+                                            <textarea class="form-control" name="prescription" style="width:300px;height:50px;padding:10px"></textarea>
+                                            <input type="hidden" name="idofprescription" value="{{i.id}}">
+                                        </td>
+                                           <td>
+                                               <button class="btn btn-light submit-button" type="submit" style="width:200px;background-color:#5FFFA9;" >Add Prescription</button>
+                                           </td>
+                                       </form>
+                                    </tr>
+                                </table>
+                            </div>
+                    </li>
+
+                </ul>
+                 {% endfor %}
+
+                </div>
+            <h1 class="text-left"><u>Previous</u> Appointments : </h1>
+                <div class="text-center" role="tablist" id="accordion-2">
+                    {% for j in pre_a %}
+                   <ul class = "collapsible popout text-center" data-collapsible = "accordion">
+                        <li class="card">
+                            <div class = "card-header collapsible-header">
+
+                               <p style="font-size:20px;" ><a><i class="fa fa-calendar-check-o"></i><button class="btn btn-light submit-button" type="button">#</button>
+                                   Had appointment with <strong style="color:black;">{{j.patientname}} </strong> on {{ j.appointmentdate}}</a></p>
+                            </div>
+                            <div class = "card-body collapsible-body">
+                                <table align="center" class="card-text" style="font-size: 19px;">
+                                    <tr>
+                                        <td>Doctor Name:</td>
+                                        <td>{{ j.doctorname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patient Name:</td>
+                                        <td>{{ j.patientname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Appointment Date:</td>
+                                        <td>{{ j.appointmentdate }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Appointment Time:</td>
+                                        <td>{{ j.appointmenttime }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Symptoms:</td>
+                                        <td>{{ j.symptoms }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prescription:</td>
+                                        <td>{{ j.prescription }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+ <script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</main>
+{% endblock %}

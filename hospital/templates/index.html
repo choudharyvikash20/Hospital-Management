@@ -1,0 +1,40 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content%}
+<link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" >
+<main>
+    <section>
+      <div>
+        <h1>A fast, and secure solution for your medical need.</h1>
+        
+      </div>
+      <img src="{% static 'img/doctor-scope.svg' %}" alt=" ">
+    </section>
+    <section>
+      <h2>Why use our service?</h2>
+      <div class="baits">
+        <div class="card">
+          <img src="{% static 'img/abhu.svg' %}" alt="decorator image">
+          <p style="font-weight:750">Free and Fast Emergency Service</p>
+          <span>Ambulance (169) </span>
+        </div>
+        <div class="card">
+          <img src="{% static 'img/doctor.svg' %}" alt="decorator image">
+          <p style="font-weight:750">Expert and Experienced Doctors </p>
+
+        </div>
+        <div class="card">
+          <img src="{% static 'img/vv.png' %}" alt="decorator image">
+          <p style="font-weight:750">Corona Vaccine are Available <br> at cheap Price </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+ {% if user.is_authenticated %}
+        <script type="text/javascript">
+            window.location('{% url 'home' %}')
+        </script>
+ {% endif %}
+{% endblock %}

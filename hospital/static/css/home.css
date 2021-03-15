@@ -1,0 +1,33 @@
+main {
+  padding-top: 1rem;
+  margin-bottom: 5rem;
+}
+main h2 {
+  text-align: center;
+}
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(102, 204, 204, 0.2);
+  justify-content: space-evenly;
+  padding: 3rem 2rem;
+  margin: 2rem 2rem;
+}
+.app {
+  margin: 2rem 0;
+  padding: 1.5rem 3rem;
+  width: max-content;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  cursor: pointer;
+  background-color: rgba(102, 204, 204, 0.7);
+  border-radius: 8px;
+}
+.app h3 {
+  padding-bottom: .5rem;
+}
+
+@media only screeb and (min-width:800px) {
+  main {
+    margin-bottom: 1rem;
+  }
+}

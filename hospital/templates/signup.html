@@ -1,0 +1,84 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" >
+
+<!--________________________________________________________________________________________________________________________-->
+
+  <main>
+    <img src="{% static 'img/signup.svg' %}" alt="Sign Up">
+    <div>
+        <form method="POST" style="margin-top: 0px;">
+                {% csrf_token %}
+                <h1 align="center">Register Form</h1>
+                    <label class="col-form-label" for="name">Name </label>
+                    <input class="form-control" type="text" name="name" id="name" style="width:500px">
+            <div></div>
+                    <label class="col-form-label" for="email">Email </label>
+                    <input class="form-control" type="email" name="email" id="email" style="width:500px">
+                    <div></div>
+                    <label class="col-form-label" for="password">Password </label>
+                    <input class="form-control" type="password" name="password" id="password" style="width:500px">
+                    <div></div>
+                   <label class="col-form-label" for="repeatpassword">Repeat Password </label>
+                   <input class="form-control" type="password" name="repeatpassword" id="repeatpassword" style="width:500px">
+            <div></div>
+                    <label class="col-form-label" for="gender">Gender</label>
+                        <select  name="gender" id="gender" style="width:170px;height:30px">
+                            <optgroup label="Select Gender" style="height:20px;">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </optgroup>
+                        </select>
+            <div></div>
+            <label class="col-form-label" for="phone">Phone Number</label>
+                    <input class="form-control" type="tel" name="phonenumber" id="phone" style="width:500px">
+
+            <div></div>
+                    <label class="col-form-label" for="address">Address</label>
+                    <textarea class="form-control" name="address" id="address" style="width: 500px;height:70px;"></textarea>
+
+            <div></div>
+                   <label class="col-form-label" for="Bday">Birth Date</label>
+                   <input class="form-control" type="date" name="Bday" id="Bday" style="width:170px;">
+
+            <div></div>
+                    <label class="col-form-label" for="bloodgroup">Blood Group</label>
+
+                        <select class="form-control" name="bloodgroup" id="bloodgroup" style="width:170px;height:30px;">
+                            <optgroup label="Choose Blood Group">
+                                <option value="O+" selected="">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </optgroup>
+                        </select>
+
+                <div></div>
+                <button class="btn btn-primary submit-button" type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="{% url 'loginpage' %}">Sign In</a></p>
+    </div>
+    {% ifequal error 'no' %}
+    <script type="text/javascript">
+        alert('Successfully created new account ......')
+        window.location('{% url 'loginpage' %}')
+    </script>
+    {% endifequal %}
+    {% ifequal error 'yes' %}
+    <script type="text/javascript">
+        alert('Something went Wrong ....')
+        window.location('{% url 'createaccountpage' %}')
+    </script>
+    {% endifequal %}
+  </main>
+
+
+<!--____________________________________________________________________________________________________________________-->
+
+
+{% endblock content %}
