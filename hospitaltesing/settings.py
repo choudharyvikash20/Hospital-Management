@@ -27,7 +27,7 @@ SECRET_KEY = '5jz+i*vb+_hew0zmc+4ek7)pou&arefw@0d9s_i_y8j#@@rny!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','your-mental-health.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','better-life-hospital.herokuapp.com']
 
 
 # Application definition
